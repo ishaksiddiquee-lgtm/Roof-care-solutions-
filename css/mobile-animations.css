@@ -1,0 +1,710 @@
+/* ═══════════════════════════════════════════════════════════════
+   ROOF CARE SOLUTION — Smooth Animations + Mobile Optimizations
+   Additive enhancements only — no existing styles changed
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════
+   1. CORE KEYFRAMES
+══════════════════════════════════════════════════════════ */
+@keyframes rcs-fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes rcs-fadeInDown {
+  from { opacity: 0; transform: translateY(-22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes rcs-fadeInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes rcs-scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes rcs-bounceIcon {
+  0%, 100% { transform: translateY(0) scale(1); }
+  35%       { transform: translateY(-7px) scale(1.05); }
+  65%       { transform: translateY(-3px) scale(1.02); }
+}
+@keyframes rcs-floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes rcs-glowPulse {
+  0%, 100% { box-shadow: 0 8px 30px rgba(210,148,28,0.45); }
+  50%       { box-shadow: 0 12px 50px rgba(210,148,28,0.75), 0 0 30px rgba(210,148,28,0.25); }
+}
+@keyframes rcs-rippleWave {
+  0%   { transform: scale(0.8); opacity: 0.55; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes rcs-gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes rcs-progressGlow {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+@keyframes rcs-slideInNavLink {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   2. HERO — STAGGERED ENTRANCE ANIMATIONS
+══════════════════════════════════════════════════════════ */
+.hero-follow-pill {
+  animation: rcs-fadeInDown 0.65s cubic-bezier(0.22,1,0.36,1) 0.05s both;
+}
+.hero-eyebrow {
+  animation: rcs-fadeInUp 0.6s ease 0.18s both;
+}
+.hero-title {
+  animation: rcs-fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.32s both;
+}
+.hero-body {
+  animation: rcs-fadeInUp 0.6s ease 0.48s both;
+}
+.hero-cta-row {
+  animation: rcs-fadeInUp 0.6s ease 0.62s both;
+}
+.hero-trust-strip {
+  animation: rcs-scaleIn 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.78s both;
+}
+.scroll-down {
+  animation: rcs-fadeInUp 0.55s ease 0.95s both;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   3. ENHANCED AOS TRANSITIONS (smoother easing)
+══════════════════════════════════════════════════════════ */
+[data-aos] {
+  transition:
+    opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   4. SCROLL PROGRESS BAR
+══════════════════════════════════════════════════════════ */
+.rcs-scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #D4921C, #E8AA3C, #4BAEC8, #D4921C);
+  background-size: 300% 100%;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.08s linear;
+  animation: rcs-gradientMove 4s linear infinite, rcs-progressGlow 2s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   5. NAVBAR — LINK UNDERLINE + OPEN ANIMATION
+══════════════════════════════════════════════════════════ */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 3px; left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 18px; height: 2px;
+  background: #D4921C;
+  border-radius: 2px;
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.28s ease;
+  opacity: 0;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+  opacity: 1;
+}
+
+/* Mobile nav links slide in when menu opens */
+.nav-menu.open .nav-link {
+  animation: rcs-slideInNavLink 0.28s ease both;
+}
+.nav-menu.open .nav-link:nth-child(1) { animation-delay: 0.04s; }
+.nav-menu.open .nav-link:nth-child(2) { animation-delay: 0.08s; }
+.nav-menu.open .nav-link:nth-child(3) { animation-delay: 0.12s; }
+.nav-menu.open .nav-link:nth-child(4) { animation-delay: 0.16s; }
+.nav-menu.open .nav-link:nth-child(5) { animation-delay: 0.20s; }
+
+
+/* ══════════════════════════════════════════════════════════
+   6. SERVICE CARDS — ENHANCED HOVER
+══════════════════════════════════════════════════════════ */
+.service-card {
+  will-change: transform;
+  transition:
+    transform 0.38s cubic-bezier(0.34,1.38,0.64,1),
+    box-shadow 0.38s ease,
+    border-color 0.38s ease !important;
+}
+.service-card:hover {
+  transform: translateY(-11px) scale(1.015) !important;
+}
+.service-card:hover .sc-icon {
+  animation: rcs-bounceIcon 0.48s ease forwards;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   7. AREA CARDS — HOVER BOUNCE
+══════════════════════════════════════════════════════════ */
+.area-card {
+  transition:
+    transform 0.38s cubic-bezier(0.34,1.38,0.64,1),
+    box-shadow 0.38s ease,
+    border-color 0.38s ease !important;
+}
+.area-card:hover {
+  transform: translateY(-9px) scale(1.02) !important;
+}
+.area-card:hover .ac-icon {
+  display: inline-block;
+  animation: rcs-bounceIcon 0.45s ease forwards;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   8. REVIEW CARDS — LIFT ON HOVER
+══════════════════════════════════════════════════════════ */
+.review-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
+  will-change: transform;
+}
+.review-card:hover {
+  transform: translateY(-7px) !important;
+  box-shadow: 0 22px 52px rgba(0,0,0,0.55) !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   9. GALLERY — IMAGE ZOOM + REVEAL
+══════════════════════════════════════════════════════════ */
+.pg-item {
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94) !important;
+}
+.pg-item:hover {
+  transform: scale(1.025) !important;
+  z-index: 2;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   10. PROCESS STEPS — HOVER LIFT
+══════════════════════════════════════════════════════════ */
+.process-step {
+  transition: transform 0.3s ease !important;
+}
+.process-step:hover {
+  transform: translateY(-5px) !important;
+}
+.process-step:hover .ps-icon {
+  animation: rcs-bounceIcon 0.45s ease forwards;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   11. TEMPERATURE STATS BADGES
+══════════════════════════════════════════════════════════ */
+.ts-badge {
+  transition: transform 0.35s cubic-bezier(0.34,1.38,0.64,1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+.ts-badge:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   12. PRIMARY CTA BUTTON — GLOW PULSE
+══════════════════════════════════════════════════════════ */
+.hcr-primary {
+  animation: rcs-glowPulse 2.8s ease-in-out infinite !important;
+}
+.hcr-primary:hover {
+  animation: none !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 18px 54px rgba(210,148,28,0.72) !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   13. WHATSAPP FLOAT — FLOAT + RIPPLE
+══════════════════════════════════════════════════════════ */
+.wa-float {
+  animation: rcs-floatGentle 3.2s ease-in-out infinite !important;
+  position: relative;
+}
+.wa-float::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(37,211,102,0.28);
+  animation: rcs-rippleWave 2.4s ease-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+.wa-float:hover {
+  animation: none !important;
+  transform: translateY(-4px) scale(1.1) !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   14. SOCIAL BUTTONS
+══════════════════════════════════════════════════════════ */
+.cis-btn, .fg-social a {
+  transition:
+    transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease !important;
+}
+.cis-btn:hover, .fg-social a:hover {
+  transform: translateY(-4px) scale(1.1) !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   15. CONTACT FORM INPUTS — FOCUS LIFT
+══════════════════════════════════════════════════════════ */
+.cf-field input,
+.cf-field select,
+.cf-field textarea {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.22s ease !important;
+}
+.cf-field input:focus,
+.cf-field select:focus,
+.cf-field textarea:focus {
+  transform: translateY(-1px) !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   16. iOS PARALLAX FIX — background-attachment
+      (fixed attachment breaks on iOS Safari)
+══════════════════════════════════════════════════════════ */
+@supports (-webkit-touch-callout: none) {
+  .hero {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+  }
+}
+@media (max-width: 900px) {
+  .hero {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    min-height: 100svh;
+    min-height: 100vh;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   17. iOS SAFE AREA INSETS (notch / home bar)
+══════════════════════════════════════════════════════════ */
+.wa-float {
+  bottom: max(28px, calc(20px + env(safe-area-inset-bottom, 0px)));
+  right: max(28px, calc(16px + env(safe-area-inset-right, 0px)));
+}
+.navbar {
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+.footer-bottom {
+  padding-bottom: max(18px, calc(10px + env(safe-area-inset-bottom, 0px)));
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   18. TOUCH DEVICES — prevent sticky hover states
+══════════════════════════════════════════════════════════ */
+@media (hover: none) and (pointer: coarse) {
+  .service-card:hover,
+  .area-card:hover,
+  .review-card:hover,
+  .pg-item:hover,
+  .process-step:hover,
+  .ts-badge:hover {
+    transform: none !important;
+    box-shadow: inherit !important;
+  }
+  .hcr-primary {
+    animation: rcs-glowPulse 2.8s ease-in-out infinite !important;
+  }
+  .wa-float::before {
+    animation: rcs-rippleWave 2.4s ease-out infinite !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   19. REDUCED MOTION ACCESSIBILITY
+══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .rcs-scroll-progress { display: none; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   20. MOBILE 768px — TABLET FIXES
+══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Better hero padding */
+  .hero-center-wrap {
+    padding: 32px 20px 44px;
+  }
+
+  /* Ensure nav logo stays compact */
+  .nav-container { gap: 12px; }
+
+  /* Process steps — 2 columns is fine at this size */
+  .process-steps { gap: 16px; }
+
+  /* Reviews track */
+  .review-card { min-width: calc(50vw - 30px); }
+
+  /* Gallery */
+  .photo-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .pg-item.pg-wide { grid-column: span 2; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   21. MOBILE 640px — PHONE LANDSCAPE / SMALL TABLET
+══════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Gallery to 2 columns */
+  .photo-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .pg-item.pg-wide { grid-column: span 2; }
+
+  /* Reviews single card */
+  .review-card { min-width: calc(100vw - 48px); }
+
+  /* Temperature showcase */
+  .temp-card {
+    min-width: unset;
+    width: 100%;
+    max-width: 340px;
+  }
+  .temp-stats-row { gap: 12px; }
+  .ts-badge { min-width: 130px; padding: 16px 16px; }
+
+  /* Warranty strip fix */
+  .warranty-strip {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+  .ws-icon { width: 56px; height: 56px; font-size: 1.5rem; }
+
+  /* Footer */
+  .footer-grid { gap: 28px; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   22. MOBILE 480px — STANDARD PHONE
+══════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  /* Section spacing */
+  .section { padding: 52px 0 !important; }
+  .section-header { margin-bottom: 38px !important; }
+  .container { padding: 0 16px !important; }
+
+  /* Section header text */
+  .section-header h2 {
+    font-size: clamp(1.55rem, 6.5vw, 2rem) !important;
+    line-height: 1.22 !important;
+  }
+  .section-header p { font-size: 0.88rem !important; }
+
+  /* Navbar */
+  .nav-container { padding: 0 14px !important; gap: 6px !important; }
+  .logo-img { width: 32px !important; height: 32px !important; }
+  .nav-brand-text { font-size: 1.05rem !important; }
+
+  /* Hero */
+  .hero-center-wrap { padding: 26px 14px 38px !important; }
+  .hero-title {
+    font-size: clamp(1.6rem, 7.2vw, 2.2rem) !important;
+    line-height: 1.18 !important;
+  }
+  .hero-body { font-size: 0.875rem !important; line-height: 1.7 !important; }
+  .hero-eyebrow { font-size: 0.68rem !important; padding: 5px 12px !important; }
+  .hero-cta-row { gap: 8px !important; }
+  .hcr-primary { padding: 11px 18px !important; font-size: 0.88rem !important; }
+  .hcr-outline  { padding: 10px 16px !important; font-size: 0.85rem !important; }
+  .hero-trust-strip {
+    padding: 12px 12px !important;
+    max-width: 100% !important;
+    gap: 0 !important;
+  }
+  .hts-num  { font-size: 1.3rem !important; }
+  .hts-lbl  { font-size: 0.58rem !important; }
+  .hts-sep  { height: 28px !important; }
+  .hero-follow-pill { padding: 8px 10px 8px 10px !important; gap: 8px !important; }
+  .hfp-count { font-size: 1.05rem !important; }
+  .hfp-lbl   { font-size: 0.65rem !important; }
+  .hfp-btn   { padding: 6px 10px !important; font-size: 0.75rem !important; }
+
+  /* Services */
+  .services-grid { gap: 14px !important; }
+  .service-card { border-radius: 14px !important; }
+  .sc-img-box { height: 160px !important; }
+  .service-card h3 { font-size: 1.05rem !important; }
+
+  /* Process — 1 column on small phones */
+  .process-steps {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .process-connector { display: none !important; }
+  .ps-body { padding: 0 8px !important; }
+
+  /* Gallery */
+  .photo-gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 5px !important;
+  }
+  .pg-item.pg-wide { grid-column: span 2 !important; }
+  .pg-item { border-radius: 8px !important; }
+
+  /* Lightbox nav on small screens */
+  .pg-lb-prev { left: 6px !important; }
+  .pg-lb-next { right: 6px !important; }
+  .pg-lb-close { top: 12px !important; right: 12px !important; }
+  .pg-lb-prev, .pg-lb-next, .pg-lb-close {
+    width: 40px !important; height: 40px !important;
+  }
+
+  /* Temperature */
+  .temp-showcase { gap: 16px !important; }
+  .temp-card {
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+    min-width: unset !important;
+    width: 100% !important;
+    max-width: 300px !important;
+  }
+  .tc-number { font-size: 2.6rem !important; }
+  .temp-stats-row { gap: 10px !important; }
+  .ts-badge { padding: 14px 12px !important; min-width: 110px !important; }
+  .ts-num { font-size: 1.6rem !important; }
+  .ts-lbl { font-size: 0.72rem !important; }
+
+  /* Coverage areas */
+  .areas-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .area-card { padding: 18px 12px !important; border-radius: 14px !important; }
+  .ac-icon { font-size: 1.8rem !important; }
+  .area-card h4 { font-size: 0.9rem !important; }
+
+  /* Trust stats */
+  .trust-stats-row { padding: 14px 12px !important; gap: 6px !important; }
+  .tsr-num  { font-size: 1.45rem !important; }
+
+  /* Warranty strip */
+  .warranty-strip {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 22px 16px !important;
+    gap: 14px !important;
+    border-radius: 20px !important;
+  }
+  .ws-icon { width: 52px !important; height: 52px !important; font-size: 1.35rem !important; }
+
+  /* Reviews */
+  .reviews-wrap { padding: 0 !important; }
+  .review-card {
+    min-width: calc(100vw - 32px) !important;
+    padding: 20px 16px !important;
+    border-radius: 14px !important;
+  }
+  .review-card p { font-size: 0.84rem !important; }
+  .reviews-controls { margin-top: 18px !important; }
+
+  /* Review form */
+  .review-submit-wrap { padding: 22px 16px !important; border-radius: 16px !important; }
+  .rsw-badge { display: none !important; }
+  .rf-two-col { grid-template-columns: 1fr !important; }
+
+  /* Contact form */
+  .contact-form-col { padding: 24px 16px !important; border-radius: 20px !important; }
+  .cf-row-2 { grid-template-columns: 1fr !important; gap: 0 !important; }
+
+  /* Footer */
+  .footer-main { padding: 36px 0 20px !important; }
+  .footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .footer-logo { font-size: 1.15rem !important; }
+  .fg-brand p  { font-size: 0.82rem !important; }
+  .fg-social a { width: 36px !important; height: 36px !important; }
+  .footer-bottom p { font-size: 0.73rem !important; }
+
+  /* WhatsApp float */
+  .wa-float {
+    width: 50px !important; height: 50px !important;
+    bottom: max(16px, calc(14px + env(safe-area-inset-bottom, 0px))) !important;
+    right: 14px !important;
+  }
+  .wa-float i { font-size: 1.45rem !important; }
+
+  /* Estimate Modal */
+  .ecm-overlay .ecm-card {
+    margin: 12px !important;
+    padding: 28px 16px 24px !important;
+    border-radius: 20px !important;
+  }
+  .ecm-title { font-size: 1.25rem !important; }
+
+  /* Lightbox image */
+  #pgLbImg {
+    max-width: 96vw !important;
+    max-height: 78vh !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   23. MOBILE 390px — iPhone 14 Pro / modern flagships
+══════════════════════════════════════════════════════════ */
+@media (max-width: 390px) {
+  .hero-title { font-size: 1.5rem !important; }
+  .nav-brand-text { font-size: 0.95rem !important; }
+  .hcr-primary, .hcr-outline { font-size: 0.82rem !important; }
+  .hero-trust-strip { padding: 10px 8px !important; }
+  .hts-num { font-size: 1.2rem !important; }
+  .hts-lbl { font-size: 0.55rem !important; }
+  .hero-follow-pill { margin-bottom: 16px !important; }
+  .hfp-count { font-size: 0.95rem !important; }
+  .hero-eyebrow { font-size: 0.64rem !important; }
+  .temp-card { padding: 20px 12px !important; }
+  .tc-number { font-size: 2.3rem !important; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   24. MOBILE LANDSCAPE — short screens
+══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 520px) {
+  .hero {
+    min-height: auto !important;
+    padding-top: 55px !important;
+  }
+  .hero-center-wrap { padding: 18px 24px 24px !important; }
+  .hero-trust-strip { display: none !important; }
+  .hero-follow-pill { display: none !important; }
+  .scroll-down { display: none !important; }
+  .hero-title { font-size: 1.7rem !important; }
+  .hero-body { font-size: 0.82rem !important; }
+  .section { padding: 48px 0 !important; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   25. IMAGE DISPLAY FIXES — ensure all images fill correctly
+══════════════════════════════════════════════════════════ */
+img {
+  max-width: 100%;
+  height: auto;
+}
+.pg-item img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+.sc-img-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+.logo-img {
+  object-fit: contain !important;
+}
+#pgLbImg {
+  max-width: 90vw;
+  max-height: 84vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   26. GALLERY GRID — ENSURE MOBILE WRAPPING IS TIGHT
+══════════════════════════════════════════════════════════ */
+.photo-gallery-grid {
+  gap: 10px;
+}
+@media (max-width: 1100px) {
+  .photo-gallery-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; }
+  .pg-item.pg-wide { grid-column: span 2 !important; }
+}
+@media (max-width: 640px) {
+  .photo-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; }
+}
+@media (max-width: 480px) {
+  .photo-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   27. TAP TARGET SIZES — min 44×44px for touch
+══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hamburger { min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
+  .lt-btn { min-height: 36px; min-width: 36px; }
+  .hfp-btn { min-height: 38px; }
+  .pg-lb-close, .pg-lb-prev, .pg-lb-next { min-width: 44px; min-height: 44px; }
+  .rc-btn { min-width: 44px; min-height: 44px; }
+  .cis-btn { min-width: 44px; min-height: 44px; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   28. REVIEWS CAROUSEL — MOBILE SWIPE HINT
+══════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .reviews-viewport {
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .reviews-viewport::-webkit-scrollbar { display: none; }
+  .reviews-track { scroll-snap-type: x mandatory; }
+  .review-card { scroll-snap-align: start; }
+}
